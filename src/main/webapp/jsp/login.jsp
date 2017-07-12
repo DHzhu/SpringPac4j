@@ -39,8 +39,8 @@
 		<div class="box">
 			<div class="content-wrap">
 				<h6>登录</h6>
-				<form action="" id="loginForm">
-					<input class="form-control" type="text" placeholder="用户名" name="userName" id="userName"/> 
+				<form action="<%=request.getContextPath()%>/callback?client_name=FormClient" id="loginForm" method="POST">
+					<input class="form-control" type="text" placeholder="用户名" name="username" id="username"/> 
 					<input class="form-control" type="password" placeholder="密码" name="password" id="password"/> 
 					<input type="hidden"  name="random" id="random" value=""/>
 					<a href="#" class="forgot">忘记密码?</a>
@@ -53,10 +53,10 @@
 			</div>
 		</div>
 
-		<div class="no-account">
+		<!-- <div class="no-account">
 			<p>没有账号?</p>
 			<a href="signup.html">注册</a>
-		</div>
+		</div> -->
 	</div>
 </body>
 </html>
