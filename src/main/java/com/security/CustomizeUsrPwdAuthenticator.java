@@ -34,26 +34,26 @@ public class CustomizeUsrPwdAuthenticator implements Authenticator<UsernamePassw
 			throws HttpAction, CredentialsException {
 		// TODO Auto-generated method stub
 		if (credentials == null) {
-            throwsException("No credential");
+            throwsException("帐号、密码不能为空");
         }
         String username = credentials.getUsername();
         String password = credentials.getPassword();
         if (CommonHelper.isBlank(username)) {
-            throwsException("Username cannot be blank");
+            throwsException("帐号不能为空");
         }
         if (CommonHelper.isBlank(password)) {
-            throwsException("Password cannot be blank");
+            throwsException("密码不能为空");
         }
         User user = new User();
         user.setUserName(username);
         User admin = userService.getUser(user);
         
         if(admin == null){
-        	throwsException("Username : '" + username + "' does not exits");
+        	throwsException("帐号 '" + username + "' 不存在");
         }
         
         if (CommonHelper.areNotEquals(password, admin.getPassword())) {
-            throwsException("Username : '" + username + "' does not match password");
+            throwsException("密码错误");
         }
         final CommonProfile profile = new CommonProfile();
         profile.setId(username);

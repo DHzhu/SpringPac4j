@@ -16,7 +16,7 @@
 	
 	<bean id="simpleAuthenticator" class="com.security.CustomizeUsrPwdAuthenticator" />
 	
-	<bean id="formClient" class="org.pac4j.http.client.indirect.FormClient">
+	<bean id="formClient" class="com.security.CustomizeFormClient">
 		<constructor-arg name="loginUrl" value="/SpringPac4j/login.do" />
 		<constructor-arg name="usernamePasswordAuthenticator" ref="simpleAuthenticator" />
 	</bean>
@@ -49,11 +49,12 @@
     <bean name="callbackFilter" class="io.buji.pac4j.filter.CallbackFilter">
     	<property name="config" ref="config" />
 		<property name="multiProfile" value="true" />
+		<property name="defaultUrl" value="/SpringPac4j/index.do" />
 	</bean>
     
     <bean name="securityFilter" class="io.buji.pac4j.filter.SecurityFilter">
 		<property name="config" ref="config" />
-		<property name="clients" value="FormClient" />
+		<property name="clients" value="CustomizeFormClient" />
 	</bean>
 	
 	<!-- 加载配置属性文件 -->

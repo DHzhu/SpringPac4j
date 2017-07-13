@@ -15,6 +15,7 @@ import org.pac4j.core.profile.ProfileManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 /**
  * @desc  : TODO
@@ -24,7 +25,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class BasicController {
 	@RequestMapping(value = "/login.do") 
-	public String showLogin(HttpServletRequest request, HttpServletResponse response, Model model){
+	public String showLogin(HttpServletRequest request, HttpServletResponse response, RedirectAttributesModelMap model){
+		String error = request.getParameter("error");
+		if(error != null && !error.equals("")){
+			model.addFlashAttribute("username", request.getParameter("username"));
+			model.addFlashAttribute("result", error);
+			return "redirect:/login.do";
+		}
+		
 		return "login";
 	}
 	

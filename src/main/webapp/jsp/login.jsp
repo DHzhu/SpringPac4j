@@ -39,8 +39,8 @@
 		<div class="box">
 			<div class="content-wrap">
 				<h6>登录</h6>
-				<form action="<%=request.getContextPath()%>/callback?client_name=FormClient" id="loginForm" method="POST">
-					<input class="form-control" type="text" placeholder="用户名" name="username" id="username"/> 
+				<form action="<%=request.getContextPath()%>/callback?client_name=CustomizeFormClient" id="loginForm" method="POST">
+					<input class="form-control" type="text" placeholder="用户名" name="username" id="username" value="${username}"/> 
 					<input class="form-control" type="password" placeholder="密码" name="password" id="password"/> 
 					<input type="hidden"  name="random" id="random" value=""/>
 					<a href="#" class="forgot">忘记密码?</a>
