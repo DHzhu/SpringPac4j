@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserDao">
+	<resultMap type="com.model.User" id="user">
+		<id property="id" column="id" />
+		<result property="userName" column="username" />
+		<result property="password" column="password" />
+	</resultMap>
+
+	<select id="getUser" resultMap="user" parameterType="com.model.User">
+		select * from oauth_user a
+		where 1=1
+		<if test="id != null and id > 0">
+			AND a.id = ${id}
+		</if>
+		<if test="userName != null and userName != ''">
+			AND a.username = '${userName}'
+		</if>
+	</select>
+
+	<insert id="addUser" parameterType="com.model.User">
+		INSERT INTO oauth_user
+		(username,password)
+		VALUES ('${userName}','${password}')
+	</insert>
+
+</mapper>

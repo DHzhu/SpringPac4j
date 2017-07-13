@@ -12,7 +12,16 @@
 		<a class="navbar-brand" href="index.do"><img src="<%=request.getContextPath()%>/public/img/logo.png"></a>
 	</div>
 	<ul class="nav navbar-nav pull-right hidden-xs">
-		
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown">
+				${username} <b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+				<li><a href="#">个人信息</a></li>
+				<li><a href="#">账号设置</a></li>
+			</ul>
+		</li>
+
 		<li class="notification-dropdown hidden-xs hidden-sm">
 			<a href="#" class="trigger"> 
 				<i class="icon-envelope"></i>
@@ -37,6 +46,12 @@
 						</div>
 					</div>
 				</div>
-			</div></li>
+			</div>
+		</li>
+		<li class="settings hidden-xs hidden-sm">
+            <a href="logout.do" role="button">
+                <i class="icon-share-alt"></i>
+            </a>
+        </li>
 	</ul>
 </header>
