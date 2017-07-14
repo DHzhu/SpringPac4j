@@ -9,7 +9,7 @@
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="index.do"><img src="<%=request.getContextPath()%>/public/img/logo.png"></a>
+		<a class="navbar-brand" href="logout.do?url=/?forcepostlogouturl"><img src="<%=request.getContextPath()%>/public/img/logo.png"></a>
 	</div>
 	<ul class="nav navbar-nav pull-right hidden-xs">
 		<li class="dropdown">

@@ -39,10 +39,11 @@ public class BasicController {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/index.do")
 	public String showIndex(HttpServletRequest request, HttpServletResponse response, Model model){
+		
 		final WebContext context = new J2EContext(request, response);
 		final ProfileManager manager = new ProfileManager(context);
 		final Optional<CommonProfile> profile = manager.get(true);
-		model.addAttribute("username", profile.get().getId());
+		model.addAttribute("username", profile.get().getAttribute("username"));
 		return "index";
 	}
 	

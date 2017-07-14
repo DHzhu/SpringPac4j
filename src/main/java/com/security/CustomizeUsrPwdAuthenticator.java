@@ -56,7 +56,7 @@ public class CustomizeUsrPwdAuthenticator implements Authenticator<UsernamePassw
             throwsException("密码错误");
         }
         final CommonProfile profile = new CommonProfile();
-        profile.setId(username);
+        //profile.setId(username);
         profile.addAttribute(Pac4jConstants.USERNAME, username);
         credentials.setUserProfile(profile);
 	}

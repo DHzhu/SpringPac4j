@@ -21,11 +21,27 @@
 		<constructor-arg name="usernamePasswordAuthenticator" ref="simpleAuthenticator" />
 	</bean>
 	
+	<bean id="oauth2Client" class="com.security.oauth2.CustomizeOAuth20Client">
+		<constructor-arg name="key" value="c1ebe466-1cdc-4bd3-ab69-77c3561b9dee" />
+		<constructor-arg name="secret" value="d8346ea2-6017-43ed-ad68-19c0f971738b" />
+		<property name="authUrl" value="http://www.oauth2.com/Oauth2/authorize.do" />
+		<property name="tokenUrl" value="http://www.oauth2.com/Oauth2/getToken.do" />
+		<property name="profileUrl" value="http://www.oauth2.com/Oauth2/getResource.do" />
+		<property name="logoutUrl" value="http://www.oauth2.com/Oauth2/logout.do" />
+		<property name="scope" value="user" />
+		<property name="profileAttrs">
+			<util:map>
+				<entry key="username" value="username" />
+			</util:map>
+		</property>
+	</bean>
+	
 	<bean id="clients" class="org.pac4j.core.client.Clients">
 		<constructor-arg name="callbackUrl" value="/SpringPac4j/callback" />
 		<constructor-arg name="clients">
 			<list>
 				<ref bean="formClient" />
+				<ref bean="oauth2Client" />
 			</list>
 		</constructor-arg>
 	</bean>
@@ -52,9 +68,14 @@
 		<property name="defaultUrl" value="/SpringPac4j/index.do" />
 	</bean>
     
-    <bean name="securityFilter" class="io.buji.pac4j.filter.SecurityFilter">
+    <bean name="formFilter" class="io.buji.pac4j.filter.SecurityFilter">
 		<property name="config" ref="config" />
 		<property name="clients" value="CustomizeFormClient" />
+	</bean>
+	
+	<bean name="oauth2Filter" class="io.buji.pac4j.filter.SecurityFilter">
+		<property name="config" ref="config" />
+		<property name="clients" value="CustomizeOAuth20Client" />
 	</bean>
 	
 	<!-- 加载配置属性文件 -->
@@ -104,7 +125,8 @@
 		
 		<property name="filters">
 			<util:map>
-				<entry key="form" value-ref="securityFilter" />
+				<entry key="form" value-ref="formFilter" />
+				<entry key="oauth2" value-ref="oauth2Filter" />
 				<entry key="callback" value-ref="callbackFilter" />
 			</util:map>
 		</property>
@@ -116,7 +138,7 @@
 				/login.do  = anon
 				/callback  = callback
 				/logout.do = logout
-				/** = form
+				/** = oauth2
 			</value>
 		</property>
 	</bean>
