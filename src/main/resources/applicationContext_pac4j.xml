@@ -79,10 +79,9 @@
 	</bean>
 	
 	<!-- 加载配置属性文件 -->
-	<context:property-placeholder ignore-unresolvable="true" location="classpath:session.properties" />
-
-	<bean id="clientsRealm" class="io.buji.pac4j.realm.Pac4jRealm">
-	</bean>
+	<context:property-placeholder ignore-unresolvable="true" location="classpath:application.properties" />
+	
+	<bean id="clientsRealm" class="io.buji.pac4j.realm.Pac4jRealm" />
 	
 	<!-- 用户授权信息Cache, 采用EhCache -->
 	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
@@ -137,7 +136,7 @@
 				/public/** = anon
 				/login.do  = anon
 				/callback  = callback
-				/logout.do = logout
+				/logout.do = anon
 				/** = oauth2
 			</value>
 		</property>

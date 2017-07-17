@@ -69,7 +69,6 @@ public class CustomizeOAuth20Client extends OAuth20Client<OAuth20Profile>{
         
         defaultLogoutActionBuilder((ctx, profile, targetUrl) -> RedirectAction.redirect(logoutUrl));
 
-
         super.clientInit(context);
     }
 
