@@ -27,7 +27,7 @@
 		<property name="authUrl" value="http://www.oauth2.com/Oauth2/authorize.do" />
 		<property name="tokenUrl" value="http://www.oauth2.com/Oauth2/getToken.do" />
 		<property name="profileUrl" value="http://www.oauth2.com/Oauth2/getResource.do" />
-		<property name="logoutUrl" value="http://www.oauth2.com/Oauth2/logout.do" />
+		<property name="logoutUrl" value="http://www.oauth2.com/Oauth2/logout.do?url=http://www.oauth2.com/SpringPac4j/login.do" />
 		<property name="scope" value="user" />
 		<property name="profileAttrs">
 			<util:map>
